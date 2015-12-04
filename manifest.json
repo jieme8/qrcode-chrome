@@ -2,7 +2,9 @@
  	/*必填*/
  	"name":"myQrcode",
  	"version":"1.0.0",
- 	"manifest_version":2,
+ 	"manifest_version":2, 																	//用整数表示manifest文件自身格式的版本号
+
+
 
  	/*选填*/
  	//"description":"简介",
@@ -11,27 +13,35 @@
  		"48":"icon.png",
  		"128":"icon.png"
  	},
-	//"default_locale": "en",
+	//"default_locale": "en", 																//指定这个扩展保的缺省字符串的子目录：_lcoales
  	 
- 	/*选其一*/
 
-  	//"page_action": {},
-  	//"theme": {},
-  	//"app": {}
- 	"browser_action":{
+
+
+ 	/*选其一*/
+ 	/*
+  	"page_action": {										//地址栏应用
+  		"default_icon": "icons/foo.png", 	// optional 
+		"default_title": "Do action",    	// optional; shown in tooltip 
+    	"default_popup": "popup.html"    	// optional 
+  	},
+  	*/
+
+  	//"theme": {},																			//主题应用
+  	//"app": {}																				//webapp应用
+ 	"browser_action":{																		//右上角页面应用
  		"default_icon":"icon.png",
  		"default_title":"mydemo",
  		"default_popup":"index.html"
  	},
 
 
-	/*根据需要提供*/
 
-	
+	/*根据需要提供*/
  	
-	//"background": {},
-	//"chrome_url_overrides": {},
-	//"content_scripts": [],
+	//"background": {"scripts": ["background.js"],"page":["background.html"]},				//背景页程序
+	//"chrome_url_overrides": {"pageToOverride":"index.html"},   							//Override替代页 默认标签
+	//"content_scripts": [{"matches":["http://www.google.com/*"],"css":["mystyles.css"],"js":["index.js"]}], //它们可以获取浏览器所访问页面的详细信息，并可以修改这些信息。
 	//"content_security_policy": "policyString",
 	//"file_browser_handlers": [],
 	//"homepage_url": "http://path/to/homepage",
@@ -47,7 +57,7 @@
 	//"requirements": {},
 	//"update_url": "http://path/to/updateInfo.xml",
 	//"web_accessible_resources": [],
-	"permissions":["tabs"]//权限
+	"permissions":["tabs"]																	//获取tabs权限
 
 
  }
